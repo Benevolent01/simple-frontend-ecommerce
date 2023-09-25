@@ -1,0 +1,43 @@
+.category-outer {
+  padding: 10px 0;
+  border-bottom: 1px solid black;
+}
+.category-title {
+  text-align: center;
+  font-size: 1.75rem;
+  margin-bottom: 10px;
+}
+
+.category-main {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.category-single {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+  border-radius: 25px;
+  border: 1px solid gray;
+  padding: 10px 20px;
+  background-color: black;
+  color: white;
+  font: 1rem "Arial";
+}
+
+.category-single input {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+.category-single .category-text {
+  overflow: hidden;
+  max-width: 200px;
+  text-overflow: ellipsis;
+}
+
+.cat-outer .categories-404 {
+  margin: auto;
+}

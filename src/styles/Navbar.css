@@ -1,0 +1,36 @@
+.mini-logo {
+  display: none;
+}
+
+.main-nav {
+  display: flex;
+  flex-wrap: wrap; /* Allow items to wrap onto the next line */
+  align-items: center;
+  padding: 0px;
+  justify-content: space-evenly;
+  border: 1px solid black;
+  font-size: 1.3rem;
+}
+
+.main-nav div {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  margin: 5px; /* Add spacing between navigation items */
+}
+
+.activeNav {
+  color: rgb(235, 151, 27);
+}
+
+.idleNav {
+  color: rgb(0, 0, 35);
+}
+
+@media (max-width: 768px) {
+  .main-nav {
+    flex-direction: column; /* Stack items vertically on small screens */
+    width: 100vw;
+    text-align: center;
+  }
+}
