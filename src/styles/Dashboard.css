@@ -45,7 +45,7 @@ li {
 }
 
 .dashboard-profile ul li .dashboard-user-span {
-  font-weight: 800;
+  font-weight: 700;
   font-size: 15px;
 }
 
@@ -55,4 +55,8 @@ li {
 
 .dashboard-profile ul li:nth-child(even) .dashboard-user-span {
   color: rgb(82, 0, 141);
+}
+
+.dashboard-edit-main {
+  padding: 10px 0;
 }

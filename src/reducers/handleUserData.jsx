@@ -32,15 +32,6 @@ const handleEditUserInfo = (state = initialState2, action) => {
   }
 };
 
-const handleFetchUsers = (state = initialState4, action) => {
-  switch (action.type) {
-    case UPDATE_USER_FETCH_USERS:
-      return { ...state, users: action.users };
-    default:
-      return state;
-  }
-};
-
 const handleUserOrders = (state = initialState3, action) => {
   switch (action.type) {
     case UPDATE_USER_ORDERS:
@@ -50,4 +41,13 @@ const handleUserOrders = (state = initialState3, action) => {
   }
 };
 
-export { handleUserInfo, handleEditUserInfo, handleFetchUsers, handleUserOrders };
+const handleFetchUsers = (state = initialState4, action) => {
+  switch (action.type) {
+    case UPDATE_USER_FETCH_USERS:
+      return { ...state, users: action.users };
+    default:
+      return state;
+  }
+};
+
+export { handleUserInfo, handleEditUserInfo, handleUserOrders, handleFetchUsers };

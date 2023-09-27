@@ -10,9 +10,7 @@ const EditProfileTab = (props) => {
     for (let [key, value] of Object.entries(props.userInfo)) props.dispatch(updateUserEditProfile(key, value));
   }, [props.userInfo]);
 
-  useEffect(() => {
-    console.log(props.editedProps);
-  }, [props.editedProps]);
+  useEffect(() => {}, [props.editedProps]);
 
   let user = props.userInfo;
   if (!user) return <></>;
@@ -28,12 +26,16 @@ const EditProfileTab = (props) => {
       },
       body: JSON.stringify(props.editedProps),
     });
-    console.log(r.body);
     if (r.status !== 200) {
       alert("Failed to updated user...");
       return;
     }
     alert("Successfully updated user profile info!");
+    window.location.reload();
+  };
+
+  const handleSaveOnEnter = async (e) => {
+    if (e.key === "Enter") handleSave();
   };
 
   return (
@@ -50,6 +52,7 @@ const EditProfileTab = (props) => {
                     type={key === "date_of_birth" ? "date" : "text"}
                     defaultValue={value}
                     onChange={(e) => props.dispatch(updateUserEditProfile(key, e.target.value))}
+                    onKeyDown={(e) => handleSaveOnEnter(e)}
                   />
                 </div>
               </label>

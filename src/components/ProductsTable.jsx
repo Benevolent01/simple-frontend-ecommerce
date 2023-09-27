@@ -5,27 +5,32 @@ import "../styles/ProductsTable.css";
 import { connect } from "react-redux";
 import customImage from "../assets/watch.jpg";
 import PnotFound from "../assets/productsNotFound.png";
+import { LOCAL_FETCHED_PRODUCTS, LOCAL_PRODUCTS_VERSION } from "../reducers/handleProducts";
 
 let currency = "€";
 
 const ProductsTable = (props) => {
-  let updateAndFetchAllProducts = async () => {
-    let r = await fetch(`${API_HOST}/viewProducts`);
-    let data = await r.json();
-    props.dispatch(getProducts(data));
-    if (!props.products.length) {
+  const updateAllProducts = async () => {
+    let nowVersion = parseInt(localStorage.getItem(LOCAL_PRODUCTS_VERSION));
+    let prevData = JSON.parse(localStorage.getItem(LOCAL_FETCHED_PRODUCTS));
+
+    // If first time or data has changed, that's all
+    if (!prevData || nowVersion !== prevData.productsVersion) {
+      let r = await fetch(`${API_HOST}/viewProducts`);
+      let data = await r.json();
+      // update all products
+      props.dispatch(getProducts(data));
+      // populate
       props.dispatch(updateProducts(data));
     }
   };
 
-  /*Logic: if products aren't fetched from DB yet, do so and update them on the table.
-    Now products are set, and can be manipulated through categories reducers and respective dispatches
-  */
+  useEffect(() => {
+    // console.log(props.products);
+  }, [props.products]);
 
   useEffect(() => {
-    if (!props.showProducts.length) {
-      updateAndFetchAllProducts();
-    }
+    updateAllProducts();
   }, []);
 
   const handleAddToCart = (product) => {
@@ -42,7 +47,9 @@ const ProductsTable = (props) => {
                 <img className="fix-prod-img" alt={"Product image"} src={product.url ?? customImage}></img>
                 <div className="product-rest">
                   <div className="product-name">
-                    <h3>{product.name}</h3>
+                    <h3>
+                      {product.name} ({product.id})
+                    </h3>
                   </div>
                   <div className="product-price">
                     <h4>
@@ -71,7 +78,7 @@ const ProductsTable = (props) => {
 };
 
 let mapStateToProps = (state) => ({
-  showProducts: state.handleProducts.fetchedProducts,
+  showProducts: state.handleProducts.fetchedProducts.data,
   products: state.handleProducts.products,
 });
 

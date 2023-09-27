@@ -36,7 +36,7 @@ const Categories = (props) => {
       return props.categories.every((neededCategory) => product.categories.includes(neededCategory));
     });
     props.dispatch(updateProducts(filteredProducts));
-  }, [props.categories]);
+  }, [props.categories, props.showProducts]);
 
   const isCategoryOn = (categoryName) => {
     return props.categories.includes(categoryName);
@@ -71,7 +71,7 @@ const Categories = (props) => {
 };
 
 let mapStateToProps = (state) => ({
-  showProducts: state.handleProducts.fetchedProducts,
+  showProducts: state.handleProducts.fetchedProducts.data,
   showCategories: state.handleCategories.fetchedCategories,
   categories: state.handleCategories.categories,
 });
