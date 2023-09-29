@@ -21,7 +21,7 @@ const Categories = (props) => {
 
   useEffect(() => {
     populateCategories();
-  }, [props.showCategories]);
+  }, []);
 
   const handleUpdateCategories = (e, categoryName) => {
     if (e.target.checked) {
