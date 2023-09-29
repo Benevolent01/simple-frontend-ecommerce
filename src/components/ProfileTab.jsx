@@ -8,6 +8,7 @@ const ProfileTab = (props) => {
   useEffect(() => {
     getUserInfo();
   }, []);
+
   const getUserInfo = async () => {
     let r = await fetch(`${API_HOST}/viewUserInfo/${props.session.username}`, {
       method: "GET",
@@ -25,20 +26,20 @@ const ProfileTab = (props) => {
     <>
       {user ? (
         <div className="dashboard-profile-container">
-          <h2>{user.username}</h2>
+          <h2>My Account ({user.username})</h2>
           <div className="dashboard-profile">
             <ul>
               <li>
-                Email: <span className="dashboard-user-span">{user.email ?? "Not input yet"}</span>
+                Email: <span className="dashboard-user-span">{user.email || "Not input yet"}</span>
               </li>
               <li>
-                First Name: <span className="dashboard-user-span">{user.first_name ?? "Not input yet"}</span>
+                First Name: <span className="dashboard-user-span">{user.first_name || "Not input yet"}</span>
               </li>
               <li>
-                Last Name: <span className="dashboard-user-span">{user.last_name ?? "Not input yet"}</span>
+                Last Name: <span className="dashboard-user-span">{user.last_name || "Not input yet"}</span>
               </li>
               <li>
-                Star Sign: <span className="dashboard-user-span">{user.star_sign ?? "Not input yet"}</span>
+                Star Sign: <span className="dashboard-user-span">{user.star_sign || "Not input yet"}</span>
               </li>
               <li>
                 Date of Birth:{" "}
@@ -47,20 +48,20 @@ const ProfileTab = (props) => {
                 </span>
               </li>
               <li>
-                Country: <span className="dashboard-user-span">{user.country ?? "Not input yet"}</span>
+                Country: <span className="dashboard-user-span">{user.country || "Not input yet"}</span>
               </li>
               <li>
-                Address: <span className="dashboard-user-span">{user.address ?? "Not input yet"}</span>
+                Address: <span className="dashboard-user-span">{user.address || "Not input yet"}</span>
               </li>
               <li>
-                Phone Number: <span className="dashboard-user-span">{user.phone_number ?? "Not input yet"}</span>
+                Phone Number: <span className="dashboard-user-span">{user.phone_number || "Not input yet"}</span>
               </li>
               <li>
                 Joined:{" "}
                 <span className="dashboard-user-span">{user.createdAt ? new Date(user.createdAt).toLocaleDateString(dateFormat) : "Not input yet"}</span>
               </li>
               <li>
-                Biography: <span className="dashboard-user-span">{user.bio ?? "Not input yet"}</span>
+                Biography: <span className="dashboard-user-span">{user.bio || "Not input yet"}</span>
               </li>
             </ul>
           </div>
