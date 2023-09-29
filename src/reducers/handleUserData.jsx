@@ -1,4 +1,4 @@
-import { UPDATE_USER_EDIT_PROFILE, UPDATE_USER_FETCH_USERS, UPDATE_USER_INFO, UPDATE_USER_ORDERS } from "../actions";
+import { UPDATE_USER_EDIT_PROFILE, UPDATE_USER_INFO } from "../actions";
 
 let initialState = {
   data: null,
@@ -7,11 +7,11 @@ let initialState = {
 let initialState2 = {};
 
 let initialState3 = {
-  orders: null,
+  users: null,
 };
 
 let initialState4 = {
-  users: null,
+  orders: null,
 };
 
 const handleUserInfo = (state = initialState, action) => {
@@ -32,22 +32,4 @@ const handleEditUserInfo = (state = initialState2, action) => {
   }
 };
 
-const handleUserOrders = (state = initialState3, action) => {
-  switch (action.type) {
-    case UPDATE_USER_ORDERS:
-      return { ...state, orders: action.orders };
-    default:
-      return state;
-  }
-};
-
-const handleFetchUsers = (state = initialState4, action) => {
-  switch (action.type) {
-    case UPDATE_USER_FETCH_USERS:
-      return { ...state, users: action.users };
-    default:
-      return state;
-  }
-};
-
-export { handleUserInfo, handleEditUserInfo, handleUserOrders, handleFetchUsers };
+export { handleUserInfo, handleEditUserInfo };

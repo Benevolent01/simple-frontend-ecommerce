@@ -14,8 +14,6 @@ export let UPDATE_LOGIN_PASSWORD = "UPDATE_LOGIN_PASSWORD";
 export let UPDATE_SESSION = "UPDATE_SESSION";
 export let UPDATE_USER_INFO = "UPDATE_USER_INFO";
 export let UPDATE_USER_EDIT_PROFILE = "UPDATE_USER_EDIT_PROFILE";
-export let UPDATE_USER_FETCH_USERS = "UPDATE_USER_FETCH_USERS";
-export let UPDATE_USER_ORDERS = "UPDATE_USER_ORDERS";
 export let UPDATE_PRODUCTS_VERSION = "UPDATE_PRODUCTS_VERSION";
 
 export let getProducts = (value) => ({ type: GET_PRODUCTS, products: value });
@@ -38,6 +36,3 @@ export let updateSession = (value1, value2, value3) => ({ type: UPDATE_SESSION, 
 export let updateUserInfo = (value) => ({ type: UPDATE_USER_INFO, data: value });
 export let updateUserEditProfile = (key, value) => ({ type: UPDATE_USER_EDIT_PROFILE, payload: { [key]: value } });
 export let updateProductsVersion = () => ({ type: UPDATE_PRODUCTS_VERSION });
-
-export let updateFetchUsers = (value) => ({ type: UPDATE_USER_FETCH_USERS, users: value });
-export let updateUserOrders = (value) => ({ type: UPDATE_USER_ORDERS, orders: value });

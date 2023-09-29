@@ -11,8 +11,8 @@ let currency = "€";
 
 const ProductsTable = (props) => {
   const updateAllProducts = async () => {
-    let nowVersion = parseInt(localStorage.getItem(LOCAL_PRODUCTS_VERSION));
     let prevData = JSON.parse(localStorage.getItem(LOCAL_FETCHED_PRODUCTS));
+    let nowVersion = parseInt(localStorage.getItem(LOCAL_PRODUCTS_VERSION));
 
     // If first time or data has changed, that's all
     if (!prevData || nowVersion !== prevData.productsVersion) {
@@ -24,10 +24,6 @@ const ProductsTable = (props) => {
       props.dispatch(updateProducts(data));
     }
   };
-
-  useEffect(() => {
-    // console.log(props.products);
-  }, [props.products]);
 
   useEffect(() => {
     updateAllProducts();

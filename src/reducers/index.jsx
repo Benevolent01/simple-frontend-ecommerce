@@ -4,7 +4,7 @@ import handleCategories from "./handleCategories";
 import handleCart from "./handleCart";
 import { handleRegister, handleLogin } from "./handleOnboarding";
 import handleSession from "./handleSession";
-import { handleUserInfo, handleEditUserInfo, handleFetchUsers, handleUserOrders } from "./handleUserData";
+import { handleUserInfo, handleEditUserInfo } from "./handleUserData";
 
 const mainReducer = combineReducers({
   handleProducts,
@@ -15,8 +15,6 @@ const mainReducer = combineReducers({
   handleSession,
   handleUserInfo,
   handleEditUserInfo,
-  handleFetchUsers,
-  handleUserOrders,
 });
 
 export default mainReducer;

@@ -12,11 +12,15 @@
 }
 
 .dashboard-tab-button {
-  padding: 10px 20px;
+  padding: 10px 10px;
   background-color: #007bff;
   color: #fff;
   border: none;
   border-radius: 3px;
+  width: 130px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
   cursor: pointer;
 }
 
@@ -44,6 +48,11 @@ li {
   display: block;
 }
 
+/* My Profile Tab */
+.dashboard-profile {
+  padding: 20px 0;
+}
+
 .dashboard-profile ul li .dashboard-user-span {
   font-weight: 700;
   font-size: 15px;
@@ -57,6 +66,34 @@ li {
   color: rgb(82, 0, 141);
 }
 
+/* Edit My Profile Tab */
 .dashboard-edit-main {
   padding: 10px 0;
+}
+
+/* Other Users Tab */
+
+.dashboard-fetch-users ul {
+  display: flex;
+  /* background-color: green; */
+  grid-template-columns: repeat(4, 300px);
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 20px 0;
+}
+
+.dashboard-fetch-users ul li {
+  border: 1px solid black;
+  border-radius: 5px;
+  text-align: center;
+  width: 300px;
+  padding: 20px;
+  flex-wrap: wrap;
+}
+
+.dashboard-fetch-users ul li p {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }

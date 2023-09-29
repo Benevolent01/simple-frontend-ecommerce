@@ -46,8 +46,9 @@ export default (state = initialState, action) => {
         localStorage.setItem(LOCAL_PRODUCTS_VERSION, updatedState.productsVersion.toString());
         return updatedState;
       }
-      let updatedState2 = { ...state, fetchProducts: { ...state.fetchedProducts, data: action.products } };
-      localStorage.setItem(LOCAL_FETCHED_PRODUCTS, JSON.stringify(updatedState2.fetchProducts));
+      let updatedState2 = { ...state, fetchedProducts: { ...state.fetchedProducts, data: action.products } };
+
+      localStorage.setItem(LOCAL_FETCHED_PRODUCTS, JSON.stringify(updatedState2.fetchedProducts));
       localStorage.setItem(LOCAL_PRODUCTS_VERSION, updatedState2.productsVersion.toString());
       return updatedState2;
     }

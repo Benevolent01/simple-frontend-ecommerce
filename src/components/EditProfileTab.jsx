@@ -21,7 +21,7 @@ const EditProfileTab = (props) => {
     let r = await fetch(`${API_HOST}/editUserInfo/${props.session.username}`, {
       method: "PUT",
       headers: {
-        "content-type": "application/json",
+        "Content-Type": "application/json",
         authorization: `Bearer ${props.session.token}`,
       },
       body: JSON.stringify(props.editedProps),
