@@ -1,27 +1,27 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import "../styles/Categories.css";
 import { connect } from "react-redux";
-import { getCategories, addCategory, removeCategory, updateProducts } from "../actions";
+import { addCategory, removeCategory, updateProducts } from "../actions";
 import { API_HOST } from "../config";
 
-/*
-The category here theoretically is one, and there are many tags.
-Many categories => Many tags, another junction table category-tag
-
-Once we filter, and change page, save that, either queries (1) or, local storage (2).
-I chose (2) here.
-*/
-
 const Categories = (props) => {
-  let populateCategories = async () => {
-    let r = await fetch(`${API_HOST}/viewCategories`);
-    let data = await r.json();
-    props.dispatch(getCategories(data));
-  };
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    populateCategories();
+    fetchCategories();
   }, []);
+
+  let fetchCategories = async () => {
+    try {
+      let r = await fetch(`${API_HOST}/viewCategories`, {
+        method: "GET",
+      });
+      let data = await r.json();
+      setCategories(data);
+    } catch (error) {
+      console.error("Error fetching categories:", error);
+    }
+  };
 
   const handleUpdateCategories = (e, categoryName) => {
     if (e.target.checked) {
@@ -47,8 +47,8 @@ const Categories = (props) => {
       <div className="category-outer">
         <h2 className="category-title">Categories</h2>
         <div className="category-main">
-          {props.showCategories.length ? (
-            props.showCategories.map((category) => (
+          {categories.length ? (
+            categories.map((category) => (
               <label className="category-single" key={category.name}>
                 <input
                   type="checkbox"
@@ -71,8 +71,7 @@ const Categories = (props) => {
 };
 
 let mapStateToProps = (state) => ({
-  showProducts: state.handleProducts.fetchedProducts.data,
-  showCategories: state.handleCategories.fetchedCategories,
+  showProducts: state.handleProducts.fetchedProducts,
   categories: state.handleCategories.categories,
 });
 

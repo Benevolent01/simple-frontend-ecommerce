@@ -122,7 +122,7 @@ const ManageCategories = (props) => {
       <h2>Manage Categories</h2>
       <div>
         <h3>Create New Category</h3>
-        <input type="text" value={newCategory} onChange={(e) => setNewCategory(e.target.value)} />
+        <input type="text" value={newCategory} onChange={(e) => setNewCategory(e.target.value.toUpperCase())} />
         <button onClick={handleCreateCategory}>Create</button>
       </div>
       <div>

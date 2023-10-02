@@ -1,30 +1,27 @@
-import { GET_CATEGORIES, ADD_CATEGORY, REMOVE_CATEGORY } from "../actions";
+import { ADD_CATEGORY, REMOVE_CATEGORY } from "../actions";
 
-let LOCAL_FETCHED_CATEGORIES = "categoriesNow";
+let LOCAL_CATEGORIES_NOW = "categoriesNow";
 
 let initialState = {
-  fetchedCategories: [],
   categories: [],
 };
 
-const localFetchedCategories = localStorage.getItem(LOCAL_FETCHED_CATEGORIES);
+let localStorageCategories = localStorage.getItem(LOCAL_CATEGORIES_NOW);
 
-if (localFetchedCategories) {
-  initialState.categories = JSON.parse(localFetchedCategories);
+if (localStorageCategories) {
+  initialState.categories = JSON.parse(localStorageCategories);
 }
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case GET_CATEGORIES:
-      return { ...state, fetchedCategories: action.categories };
     case ADD_CATEGORY: {
       let updatedCategories = { ...state, categories: [...state.categories, action.category] };
-      localStorage.setItem(LOCAL_FETCHED_CATEGORIES, JSON.stringify(updatedCategories.categories));
+      localStorage.setItem(LOCAL_CATEGORIES_NOW, JSON.stringify(updatedCategories.categories));
       return updatedCategories;
     }
     case REMOVE_CATEGORY: {
       let updatedCategories = { ...state, categories: state.categories.filter((category) => category !== action.category) };
-      localStorage.setItem(LOCAL_FETCHED_CATEGORIES, JSON.stringify(updatedCategories.categories));
+      localStorage.setItem(LOCAL_CATEGORIES_NOW, JSON.stringify(updatedCategories.categories));
       return updatedCategories;
     }
     default:

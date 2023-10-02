@@ -1,28 +1,19 @@
 import { useEffect } from "react";
 import { updateProducts, getProducts, addCartProduct } from "../actions";
-import { API_HOST } from "../config";
+import { API_HOST, currency } from "../config";
 import "../styles/ProductsTable.css";
 import { connect } from "react-redux";
 import customImage from "../assets/watch.jpg";
 import PnotFound from "../assets/productsNotFound.png";
-import { LOCAL_FETCHED_PRODUCTS, LOCAL_PRODUCTS_VERSION } from "../reducers/handleProducts";
-
-let currency = "€";
 
 const ProductsTable = (props) => {
   const updateAllProducts = async () => {
-    let prevData = JSON.parse(localStorage.getItem(LOCAL_FETCHED_PRODUCTS));
-    let nowVersion = parseInt(localStorage.getItem(LOCAL_PRODUCTS_VERSION));
-
-    // If first time or data has changed, that's all
-    if (!prevData || nowVersion !== prevData.productsVersion) {
-      let r = await fetch(`${API_HOST}/viewProducts`);
-      let data = await r.json();
-      // update all products
-      props.dispatch(getProducts(data));
-      // populate
-      props.dispatch(updateProducts(data));
-    }
+    let r = await fetch(`${API_HOST}/viewProducts`);
+    let data = await r.json();
+    // update all products
+    props.dispatch(getProducts(data));
+    // populate
+    props.dispatch(updateProducts(data));
   };
 
   useEffect(() => {
@@ -40,7 +31,7 @@ const ProductsTable = (props) => {
           {props.products.length ? (
             props.products.map((product) => (
               <div key={product.id} className="product-main">
-                <img className="fix-prod-img" alt={"Product image"} src={product.url ?? customImage}></img>
+                <img className="fix-prod-img" alt={"Product image"} src={product.url || customImage}></img>
                 <div className="product-rest">
                   <div className="product-name">
                     <h3>
@@ -74,7 +65,7 @@ const ProductsTable = (props) => {
 };
 
 let mapStateToProps = (state) => ({
-  showProducts: state.handleProducts.fetchedProducts.data,
+  showProducts: state.handleProducts.fetchedProducts,
   products: state.handleProducts.products,
 });
 

@@ -2,6 +2,7 @@ import {} from "react";
 import "../styles/Cart.css";
 import { connect } from "react-redux";
 import Navbar from "./Navbar";
+import customImage from "../assets/watch.jpg";
 import { removeCartProduct } from "../actions";
 
 const Cart = (props) => {
@@ -19,7 +20,7 @@ const Cart = (props) => {
         <ul className="cart-list">
           {props.cart.map((product) => (
             <li key={product.id} className="cart-product">
-              <img src={product.url} alt={product.name} className="product-image" />
+              <img src={product.url || customImage} alt={product.name} className="product-image" />
               <div className="product-details">
                 <h3>{product.name}</h3>
                 <p>Price: ${product.price}</p>

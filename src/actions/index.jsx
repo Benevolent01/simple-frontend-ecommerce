@@ -2,7 +2,6 @@
 
 export let GET_PRODUCTS = "GET_PRODUCTS";
 export let UPDATE_PRODUCTS = "UPDATE_PRODUCTS";
-export let GET_CATEGORIES = "GET_CATEGORIES";
 export let ADD_CATEGORY = "ADD_CATEGORY";
 export let REMOVE_CATEGORY = "REMOVE_CATEGORY";
 export let ADD_CART_PRODUCT = "ADD_CART_PRODUCT";
@@ -14,12 +13,10 @@ export let UPDATE_LOGIN_PASSWORD = "UPDATE_LOGIN_PASSWORD";
 export let UPDATE_SESSION = "UPDATE_SESSION";
 export let UPDATE_USER_INFO = "UPDATE_USER_INFO";
 export let UPDATE_USER_EDIT_PROFILE = "UPDATE_USER_EDIT_PROFILE";
-export let UPDATE_PRODUCTS_VERSION = "UPDATE_PRODUCTS_VERSION";
 
 export let getProducts = (value) => ({ type: GET_PRODUCTS, products: value });
 export let updateProducts = (value) => ({ type: UPDATE_PRODUCTS, products: value });
 
-export let getCategories = (value) => ({ type: GET_CATEGORIES, categories: value });
 export let addCategory = (value) => ({ type: ADD_CATEGORY, category: value });
 export let removeCategory = (value) => ({ type: REMOVE_CATEGORY, category: value });
 
@@ -35,4 +32,3 @@ export let updateSession = (value1, value2, value3) => ({ type: UPDATE_SESSION, 
 
 export let updateUserInfo = (value) => ({ type: UPDATE_USER_INFO, data: value });
 export let updateUserEditProfile = (key, value) => ({ type: UPDATE_USER_EDIT_PROFILE, payload: { [key]: value } });
-export let updateProductsVersion = () => ({ type: UPDATE_PRODUCTS_VERSION });

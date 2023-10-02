@@ -28,6 +28,17 @@
   background-color: #0056b3;
 }
 
+@media (max-width: 800px) {
+  .dashboard-tabs {
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+  .dashboard-tabs button {
+    width: 40%;
+  }
+}
+
 .dashboard-tab-content {
   display: none;
   border: 1px solid #ccc;
@@ -50,7 +61,13 @@ li {
 
 /* My Profile Tab */
 .dashboard-profile {
-  padding: 20px 0;
+  padding-top: 20px;
+}
+
+.dashboard-profile ul li {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .dashboard-profile ul li .dashboard-user-span {
@@ -75,7 +92,6 @@ li {
 
 .dashboard-fetch-users ul {
   display: flex;
-  /* background-color: green; */
   grid-template-columns: repeat(4, 300px);
   justify-content: flex-start;
   flex-wrap: wrap;
@@ -88,7 +104,7 @@ li {
   border-radius: 5px;
   text-align: center;
   width: 300px;
-  padding: 20px;
+  padding: 20px 0;
   flex-wrap: wrap;
 }
 
@@ -96,4 +112,12 @@ li {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
+  width: 90%;
+  margin: auto;
+}
+
+@media (max-width: 800px) {
+  .dashboard-fetch-users ul li {
+    width: 100%;
+  }
 }

@@ -7,3 +7,4 @@ export const cartPath = "/my-cart";
 export const myProfilePath = "/my-profile";
 
 export const dateFormat = "el-GR";
+export let currency = "€";
