@@ -55,8 +55,7 @@ yarn dev
 
 - **src**: Contains the source code for the React application.
   - **components**: React components used to build the user interface.
-  - **redux**: Redux store configuration, actions, reducers, and selectors.
-  - **routes**: Routing configuration for different pages and views.
+  - **reducers/actions**: Redux store configuration, actions, reducers, and selectors.
   - **styles**: Stylesheets and CSS files.
 - **public**: Static assets such as images, fonts, and other files.
 - **package.json**: Project configuration file with dependencies and scripts.
