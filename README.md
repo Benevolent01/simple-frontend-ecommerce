@@ -24,7 +24,7 @@ This project is a frontend application for an ecommerce website built using Reac
 1. Clone this repository to your local machine.
 
 ```bash
-git clone [<repository-url>](https://github.com/Benevolent01/simple-frontend-ecommerce)
+git clone https://github.com/Benevolent01/simple-frontend-ecommerce
 ```
 
 2. Navigate to the project directory.
@@ -69,4 +69,4 @@ Contributions to this project are welcome. Please feel free to open issues, sugg
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the MIT License.
